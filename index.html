@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+  maximum-scale=5"
+    />
+
+    <link rel="icon" href="./src/assets/images/devchallenges.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="./src/styles/style.css" />
+
+    <title>File Uploader</title>
+  </head>
+  <body>
+    <div class="upload-file">
+      <h2 class="title">Upload your image</h2>
+      <p class="text">File should be Jpeg, Png,...</p>
+      <form>
+        <div class="drag-label">
+          <span>Drag & Drop your image here</span>
+        </div>
+
+        <input type="file" class="input" name="file" id="file" />
+
+        <!-- <label class="drag-label" for="file"></label> -->
+      </form>
+    </div>
+    <script src="./src/js/drag.js"></script>
+  </body>
+</html>
