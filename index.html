@@ -23,14 +23,25 @@
     <div class="upload-file">
       <h2 class="title">Upload your image</h2>
       <p class="text">File should be Jpeg, Png,...</p>
-      <form>
+      <form class="form">
         <div class="drag-label">
-          <span>Drag & Drop your image here</span>
+          <div class="drag-content">
+            <img
+              class="drag-image"
+              src="./src/assets/images/image.svg"
+              alt=""
+            />
+            <p class="text-form">Drag & Drop your image here</p>
+          </div>
         </div>
 
-        <input type="file" class="input" name="file" id="file" />
+        <p class="text-form">Or</p>
+        <label class="label-file" for="file"
+        "
+          >Choose a file
+          <input class="input" type="file"  name="file" id="file" />
+        </label>
 
-        <!-- <label class="drag-label" for="file"></label> -->
       </form>
     </div>
 
