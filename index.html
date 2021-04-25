@@ -20,47 +20,54 @@
     <title>File Uploader</title>
   </head>
   <body class="center">
-    <div class="container upload-file">
-      <h2 class="title">Upload your image</h2>
-      <p class="text">File should be Jpeg, Png,...</p>
+    <div class="container">
+      <div class="upload-file">
+        <h2 class="title">Upload your image</h2>
+        <p class="text">File should be Jpeg, Png,...</p>
 
-      <form class="form">
-        <div class="drag-label center">
-          <img class="drag-image" src="./src/assets/images/image.svg" alt="" />
-          <p class="text-form">Drag & Drop your image here</p>
-        </div>
+        <form class="form">
+          <div class="drag-label center">
+            <img
+              class="drag-image"
+              src="./src/assets/images/image.svg"
+              alt=""
+            />
+            <p class="text-form">Drag & Drop your image here</p>
+          </div>
 
-        <p class="text-form">Or</p>
+          <p class="text-form">Or</p>
 
-        <label class="label-file" for="file"
-          >Choose a file
-          <input class="input" type="file" name="file" id="file" />
-        </label>
-      </form>
-    </div>
+          <label class="label-file" for="file"
+            >Choose a file
+            <input class="input" type="file" name="file" id="file" />
+          </label>
+        </form>
+      </div>
 
-    <div class="container upload-progress">
-      <h2 class="title">Uploading...</h2>
-      <span class="progress-bar"></span>
-    </div>
+      <div class="upload-progress">
+        <h2 class="title">Uploading...</h2>
+        <span class="progress-bar"></span>
+      </div>
 
-    <div class="container center success">
-      <h2 class="title">Uploaded Successfully!</h2>
+      <div class="success">
+        <h2 class="title">Uploaded Successfully!</h2>
 
-      <figure class="figure">
-        <img
-          class="image-uploaded"
-          src="https://picsum.photos/200/300"
-          alt="https://picsum.photos/200/300"
-        />
-        <figcaption class="wrapper-copy">
-          <a class="link" href="https://picsum.photos/200/300"
-            >https://images.yourdomain.com/photo-1496950866446-325...</a
-          >
-          <button class="label-file">copy link</button>
-        </figcaption>
-      </figure>
-      <button class="label-file back-button">Back to first page</button>
+        <figure class="figure">
+          <img class="image-uploaded" src="" alt="" />
+          <figcaption class="wrapper-copy">
+            <a
+              class="link"
+              href="https://picsum.photos/200/300"
+              target="_blank"
+              rel="noopener noreferrer"
+              >#</a
+            >
+            <input type="text" name="hidden" value="" id="input-hidden" />
+            <button class="label-file copy-button">copy link</button>
+          </figcaption>
+        </figure>
+        <button class="label-file back-button">Back to first page</button>
+      </div>
     </div>
 
     <script src="./src/js/app.js"></script>

@@ -1,12 +1,20 @@
+const $dragDiv = document.querySelector(".drag-label");
+const $backButton = document.querySelector(".back-button");
 const $inputFile = document.querySelector("#file");
+const $image = document.querySelector(".image-uploaded");
+const $link = document.querySelector(".link");
+const $btnCopy = document.querySelector(".copy-button");
+const $hiddenInput = document.querySelector("#input-hidden");
+
+const URL = `https://file-upload-backend.vercel.app/`;
 
 const handleEvents = (e) => {
   e.preventDefault();
   e.stopPropagation();
 };
 
-const handleFiles = (file) => {
-  var url = "";
+const linkToImage = (filename) => {
+  return `${URL}/files/${filename}`;
 };
 
 const getFile = () => {
@@ -27,15 +35,17 @@ const showElement = (selector) => {
   element.style.display = "block";
 };
 
+const setImage = (img) => {
+  $image.setAttribute("src", linkToImage(img));
+};
+
+const setLink = (img) => {
+  const imgUrl = linkToImage(img);
+  $link.setAttribute("href", imgUrl);
+  $link.textContent = imgUrl;
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  const $dragDiv = document.querySelector(".drag-label");
-  const $backButton = document.querySelector(".back-button");
-
-  $backButton.addEventListener("click", () => {
-    hideElement(".success");
-    showElement(".upload-file");
-  });
-
   $dragDiv.addEventListener("dragover", handleEvents);
 
   $dragDiv.addEventListener("drop", (e) => {
@@ -46,9 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
     postFile();
   });
 
-  // const $button = document.querySelector("button");
+  $backButton.addEventListener("click", () => {
+    hideElement(".success");
+    showElement(".upload-file");
+  });
 
-  // $button.addEventListener("click", async (e) => {});
+  $btnCopy.addEventListener("click", () => {
+    $hiddenInput.value = $link.text;
+    $hiddenInput.select();
+    document.execCommand("copy");
+  });
 });
 
 const postFile = () => {
@@ -58,15 +75,20 @@ const postFile = () => {
   const request = new XMLHttpRequest();
 
   request.onload = () => {
+    if (request.status !== 201) {
+      alert("something went wrong");
+      showElement(".upload-file");
+      hideElement(".upload-progress");
+      return;
+    }
+
     hideElement(".upload-progress");
     showElement(".success");
-    var data = request.responseText;
-    console.log("request.responseText");
-    console.log(data);
+    var data = JSON.parse(request.responseText);
+    setImage(data.file.filename);
+    setLink(data.file.filename);
   };
 
-  // request.open("post", "http://localhost:3000/files");
-
-  request.open("post", "https://test-vercel-diazevedo.vercel.app/files");
+  request.open("post", `${URL}files`);
   request.send(formData);
 };
