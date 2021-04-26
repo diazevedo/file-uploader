@@ -66,6 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
     $hiddenInput.select();
     document.execCommand("copy");
   });
+
+  $inputFile.addEventListener("change", (e) => {
+    setFile($inputFile.files[0]);
+    hideElement(".upload-file");
+    showElement(".upload-progress");
+    postFile();
+  });
 });
 
 const postFile = () => {
