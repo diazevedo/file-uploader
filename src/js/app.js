@@ -7,6 +7,7 @@ const $btnCopy = document.querySelector(".copy-button");
 const $hiddenInput = document.querySelector("#input-hidden");
 
 const URL = `https://file-upload-backend.vercel.app/`;
+// const URL = `http://localhost:3333/`;
 
 const handleEvents = (e) => {
   e.preventDefault();
@@ -14,7 +15,7 @@ const handleEvents = (e) => {
 };
 
 const linkToImage = (filename) => {
-  return `${URL}/files/${filename}`;
+  return `${URL}files/${filename}`;
 };
 
 const getFile = () => {
