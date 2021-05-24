@@ -7,7 +7,6 @@ const $btnCopy = document.querySelector(".copy-button");
 const $hiddenInput = document.querySelector("#input-hidden");
 
 const URL = `https://file-upload-backend.vercel.app/`;
-// const URL = `http://localhost:3333/`;
 
 const handleEvents = (e) => {
   e.preventDefault();
@@ -66,6 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
     $hiddenInput.value = $link.text;
     $hiddenInput.select();
     document.execCommand("copy");
+
+    const txt = document.createElement("textarea");
+    document.body.appendChild(txt);
+    txt.value = $link.text;
+    txt.textContent = $link.text;
+    var sel = getSelection();
+    var range = document.createRange();
+    range.selectNode(txt);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    document.body.removeChild(txt);
   });
 
   $inputFile.addEventListener("change", (e) => {
